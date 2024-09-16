@@ -12,8 +12,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    fn test_break_even_point() {
+        let result = break_even_point(1000.0, 100.0, 50.0);
+        assert_eq!(result, 20.0);
     }
 }
