@@ -2,6 +2,10 @@
 
 Rust library based on managerial accounting formulas.
 
-- Break even point
+### Chapter 1
 
-#TODO Add the rest of formulas
+Introduction
+
+### Chapter 2
+
+Cost Analysis. Cost Object, direct and indirect costs, fixed and variable costs. 
