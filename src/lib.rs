@@ -92,7 +92,7 @@ impl CostObject {
     }
 }
 
-pub struct CostAnalysis {h
+pub struct CostAnalysis {
     pub cost_objects: HashMap<String, CostObject>,
 }
 

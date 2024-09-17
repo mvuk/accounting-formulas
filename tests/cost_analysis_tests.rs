@@ -1,4 +1,4 @@
-use accounting_formulas::{Cost, CostObject, CostAnalysis, CostType, CostClassification};
+use accounting_formulas::{Cost, CostObject, CostAnalysis, CostType, CostClassification, break_even_point, contribution_margin};
 #[cfg(test)]
 mod tests {
     use super::*;
