@@ -49,16 +49,19 @@ impl Cost {
 pub struct CostObject {
     pub name: String,
     pub costs: Vec<Cost>,
+    pub units: u32,
+    pub price_per_unit: f64,
 }
 
 impl CostObject {
-    pub fn new(name: String) -> Self {
+    pub fn new(name: String, units: u32, price_per_unit: f64) -> Self {
         CostObject {
             name,
             costs: Vec::new(),
+            units,
+            price_per_unit,
         }
     }
-
     pub fn add_cost(&mut self, cost: Cost) {
         self.costs.push(cost);
     }
@@ -89,6 +92,20 @@ impl CostObject {
             .map(|c| c.amount)
             .sum();
         (direct, indirect)
+    }
+
+    pub fn contribution_margin_per_unit(&self) -> f64 {
+        let (variable_costs, _) = self.variable_fixed_breakdown();
+        self.price_per_unit - (variable_costs / self.units as f64)
+    }
+
+    pub fn contribution_margin_ratio(&self) -> f64 {
+        self.contribution_margin_per_unit() / self.price_per_unit
+    }
+
+    pub fn break_even_units(&self) -> u32 {
+        let (_, fixed_costs) = self.variable_fixed_breakdown();
+        (fixed_costs / self.contribution_margin_per_unit()).ceil() as u32
     }
 }
 
